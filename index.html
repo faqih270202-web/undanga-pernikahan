@@ -745,7 +745,16 @@
           }
         });
       }
-
+<style>
+@media print {
+  /* Menyembunyikan menu bagian atas saat dicetak ke PDF */
+  div[style*="position: fixed"], 
+  div:has(> input#guestInput), 
+  input, button {
+    display: none !important;
+  }
+}
+</style>
       // Listener perubahan history navigasi (back/forward)
       window.addEventListener('popstate', function () {
         var guestFromPop = getGuestNameFromUrl();
