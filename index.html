@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DARI PERTEMUAN MENUJU KEABADIAN - Diva Fakih & Arinda Avrillia</title>
+  <style>
+    /* RESET & DASAR ACADEMIC STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f4f5f7;
+      color: #000000;
+      font-family: "Times New Roman", Times, Georgia, "Source Serif 4", serif;
+      font-size: 10.5pt;
+      line-height: 1.45;
+      padding: 20px 10px;
+    }
+
+    /* KONTEN ARTIKEL JURNAL ELSEVIER */
+    .journal-paper {
+      background-color: #ffffff;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 50px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #d1d5db;
+    }
+
+    /* HEADER ELSEVIER */
+    .elsevier-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #000000;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .elsevier-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .elsevier-tree-svg {
+      width: 46px;
+      height: 54px;
+      flex-shrink: 0;
+    }
+
+    .elsevier-meta {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      color: #222222;
+      line-height: 1.35;
+    }
+
+    .elsevier-meta .brand-title {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #000000;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .elsevier-meta .journal-name {
+      font-style: italic;
+      font-weight: bold;
+      color: #111111;
+    }
+
+    .elsevier-meta .issn {
+      color: #444444;
+      font-size: 8.5pt;
+    }
+
+    .elsevier-right-group {
+      text-align: right;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sciencedirect-tag {
+      font-weight: bold;
+      color: #ff6c00;
+      font-size: 12pt;
+      letter-spacing: -0.5px;
+    }
+
+    .undangan-tag {
+      font-size: 9pt;
+      font-weight: bold;
+      color: #002b49;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .monogram-badge {
+      display: inline-block;
+      border: 1px solid #002b49;
+      padding: 1px 8px;
+      font-size: 8pt;
+      font-weight: bold;
+      margin-top: 4px;
+      color: #002b49;
+    }
+
+    /* KEPADA TAMU UNDANGAN (DIPERBARUI VIA JS) */
+    .recipient-banner {
+      background-color: #fafbfc;
+      border: 1px solid #007398;
+      border-left: 5px solid #007398;
+      padding: 10px 14px;
+      margin-bottom: 22px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .recipient-label {
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      color: #007398;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      margin-bottom: 2px;
+    }
+
+    .recipient-name {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 14pt;
+      font-weight: bold;
+      color: #002b49;
+    }
+
+    /* JUDUL UTAMA ARTIKEL */
+    .main-title {
+      font-size: 17pt;
+      font-weight: bold;
+      line-height: 1.25;
+      color: #000000;
+      margin-bottom: 14px;
+      text-align: left;
+    }
+
+    /* NAMA PENULIS / MEMPELAI */
+    .authors-section {
+      margin-bottom: 18px;
+    }
+
+    .authors-names {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .authors-names span {
+      margin-right: 14px;
+    }
+
+    .authors-affiliations {
+      font-size: 9pt;
+      color: #333333;
+      line-height: 1.4;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 14px;
+    }
+
+    .authors-affiliations p {
+      margin-bottom: 2px;
+    }
+
+    /* BAGIAN GRID: INFORMASI JURNAL & ABSTRAK */
+    .abstract-metadata-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 14px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 16px;
+    }
+
+    @media (min-width: 680px) {
+      .abstract-metadata-container {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 24px;
+      }
+    }
+
+    /* KOTAK KIRI: ARTICLE HISTORY, KEYWORDS, ALAMAT, DOI */
+    .journal-sidebar {
+      font-size: 9pt;
+      line-height: 1.35;
+      border-right: none;
+      padding-right: 0;
+    }
+
+    @media (min-width: 680px) {
+      .journal-sidebar {
+        border-right: 1px solid #e5e7eb;
+        padding-right: 16px;
+      }
+    }
+
+    .sidebar-block {
+      margin-bottom: 14px;
+    }
+
+    .sidebar-heading {
+      font-weight: bold;
+      font-size: 9pt;
+      margin-bottom: 3px;
+      color: #000000;
+    }
+
+    .sidebar-content {
+      color: #222222;
+    }
+
+    .sidebar-content a {
+      color: #007398;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+
+    /* KOTAK KANAN: ABSTRACT */
+    .abstract-box {
+      text-align: justify;
+    }
+
+    .abstract-heading {
+      font-weight: bold;
+      font-size: 10pt;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .abstract-text {
+      font-size: 9.5pt;
+      line-height: 1.45;
+      text-indent: 1.5em;
+    }
+
+    /* TATA LETAK DUA KOLOM UNTUK KONTEN UTAMA ARTIKEL */
+    .two-column-body {
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    @media (min-width: 768px) {
+      .two-column-body {
+        column-count: 2;
+        column-gap: 26px;
+      }
+    }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      break-after: avoid;
+    }
+
+    .sub-section-title {
+      font-size: 10pt;
+      font-weight: bold;
+      font-style: italic;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      break-after: avoid;
+    }
+
+    .two-column-body p {
+      margin-bottom: 10px;
+      text-indent: 1.5em;
+    }
+
+    .two-column-body p.no-indent {
+      text-indent: 0;
+    }
+
+    /* PLACEHOLDER GAMBAR & CAPTION BERGAYA ELSEVIER */
+    .figure-container {
+      margin: 14px 0;
+      text-align: center;
+      break-inside: avoid;
+      background-color: #fafbfc;
+      border: 1px solid #d1d5db;
+      padding: 10px;
+    }
+
+    .figure-image-box {
+      width: 100%;
+      min-height: 180px;
+      background-color: #f3f4f6;
+      border: 1px dashed #9ca3af;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      margin-bottom: 8px;
+    }
+
+    .figure-image-box img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #e5e7eb;
+    }
+
+    .figure-caption {
+      font-size: 8.5pt;
+      text-align: left;
+      line-height: 1.35;
+      color: #111111;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .figure-caption strong {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+    }
+
+    /* FOOTER ELSEVIER */
+    .article-footer {
+      border-top: 1px solid #000000;
+      margin-top: 24px;
+      padding-top: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 8pt;
+      color: #666666;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* TOOLBAR / TESTER UNTUK MERUBAH ?kepada= */
+    .toolbar-container {
+      max-width: 900px;
+      margin: 0 auto 16px auto;
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+    }
+
+    .toolbar-input-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .toolbar-input {
+      flex: 1;
+      padding: 6px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 3px;
+      font-size: 9pt;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .toolbar-btn {
+      background-color: #002b49;
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 8.5pt;
+    }
+
+    .toolbar-btn:hover {
+      background-color: #001a2c;
+    }
+
+    .toolbar-btn-secondary {
+      background-color: #007398;
+    }
+
+    .toolbar-btn-secondary:hover {
+      background-color: #005a77;
+    }
+
+    /* PRINT RULES */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        padding: 0 !important;
+      }
+      .toolbar-container {
+        display: none !important;
+      }
+      .journal-paper {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+<script src="/_aistudio-iframe.js?v=2c34bde1"></script></head>
+<body>
+
+  <!-- TOOLBAR PENGUJI PARAMETER ?kepada= & SALIN TAUTAN (TIDAK TERCETAK) -->
+  <div class="toolbar-container" id="noPrintToolbar">
+    <div class="toolbar-input-group">
+      <label for="inputNamaTamu"><strong>Tes Nama Tamu:</strong></label>
+      <input type="text" id="inputNamaTamu" class="toolbar-input" placeholder="Ketik nama tamu (contoh: Bapak Budi Santoso & Keluarga)">
+      <button type="button" class="toolbar-btn" id="btnUpdateNama">Terapkan</button>
+      <button type="button" class="toolbar-btn toolbar-btn-secondary" id="btnSalinLink">Salin Link Undangan</button>
+    </div>
+    <div>
+      <button type="button" class="toolbar-btn" onclick="window.print()">Cetak / Simpan PDF</button>
+    </div>
+  </div>
+
+  <!-- LEMBAR DOKUMEN ARTIKEL JURNAL ELSEVIER -->
+  <article class="journal-paper">
+
+    <!-- [Bagian Header / Atas] -->
+    <header class="elsevier-header">
+      <div class="elsevier-logo-group">
+        <!-- Elsevier Non Solus Tree Emblem SVG -->
+        <svg class="elsevier-tree-svg" viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M50 8 C52 8 53 9 54 11 C58 19 63 23 72 26 C79 29 84 35 85 43 C86 52 81 60 74 64 C70 66 67 69 65 73 C63 77 62 82 63 87 C64 94 60 100 53 102 C50 103 48 103 45 102 C39 99 35 94 36 87 C37 82 36 77 34 73 C32 69 29 66 25 64 C18 60 13 52 14 43 C15 35 20 29 27 26 C36 23 41 19 45 11 C46 9 47 8 50 8 Z" fill="#002b49" fill-opacity="0.08"/>
+          <path d="M49 18 C52 26 58 32 66 35 C74 38 78 44 78 52 C78 60 73 66 66 69 C60 72 57 78 57 85 C57 91 53 96 47 97 C41 96 37 91 37 85 C37 78 34 72 28 69 C21 66 16 60 16 52 C16 44 20 38 28 35 C36 32 42 26 45 18 Z" stroke="#002b49" stroke-width="2.5" fill="none"/>
+          <circle cx="47" cy="52" r="5" fill="#ff6c00"/>
+          <path d="M47 38 L47 88 M36 72 L58 72 M31 88 L63 88" stroke="#002b49" stroke-width="3" stroke-linecap="round"/>
+          <text x="47" y="114" font-size="9" text-anchor="middle" font-family="'Times New Roman', serif" font-weight="bold" fill="#002b49" letter-spacing="1">NON SOLUS</text>
+        </svg>
+
+        <div class="elsevier-meta">
+          <div class="brand-title">ELSEVIER</div>
+          <div class="journal-name">WJFA: Wedding Journey of Fakih and Arinda</div>
+          <div class="issn">ISSN: Ijinkan Saya Sekeluarga Ngundang</div>
+        </div>
+      </div>
+
+      <div class="elsevier-right-group">
+        <div class="sciencedirect-tag">ScienceDirect</div>
+        <div class="undangan-tag">UNDANGAN PERNIKAHAN</div>
+        <div class="monogram-badge">F&amp;A</div>
+      </div>
+    </header>
+
+    <!-- [Penerima Undangan - Gunakan JS di sini] -->
+    <div class="recipient-banner">
+      <div class="recipient-label">Penerima Undangan Kehormatan:</div>
+      <div class="recipient-name" id="namaTamuDisplay">Kepada: Tamu Undangan</div>
+    </div>
+
+    <!-- [Judul Utama] -->
+    <h1 class="main-title">
+      DARI PERTEMUAN MENUJU KEABADIAN: SEBUAH KISAH PENYATUAN DUA JIWA DALAM IKATAN SUCI PERNIKAHAN
+    </h1>
+
+    <!-- [Nama Penulis / Mempelai] -->
+    <section class="authors-section">
+      <div class="authors-names">
+        <span>Diva Fakih As Shkiy Thalib, S.Pd., M.Pd.¹</span>
+        <span>Arinda Avrillia Putri, S.Pd., M.Pd.²</span>
+      </div>
+
+      <div class="authors-affiliations">
+        <p>¹Putra dari Bapak Abdul Muntolib &amp; Ibu Siti Masithoh</p>
+        <p>²Putri dari Bapak Suhartono &amp; Ibu Trisusanti</p>
+        <p>¹Asal: Kabupaten Melawi, Kalimantan Barat</p>
+        <p>²Asal: Kabupaten Pati, Jawa Tengah</p>
+      </div>
+    </section>
+
+    <!-- [Informasi Jurnal / Kotak Kiri atau Kanan & ABSTRACT] -->
+    <section class="abstract-metadata-container">
+      
+      <!-- Kotak Kiri / Informasi Jurnal -->
+      <aside class="journal-sidebar">
+        <div class="sidebar-block">
+          <div class="sidebar-heading">Article history:</div>
+          <div class="sidebar-content">
+            First Meeting: November 2022<br>
+            Final Revised: 2022-2027<br>
+            Accepted: Juny 23, 2026<br>
+            Published: July 07, 2027
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-heading">Keywords:</div>
+          <div class="sidebar-content">
+            Pernikahan, Cinta, Keluarga, keberkahan
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-heading">Alamat Akad dan Resepsi:</div>
+          <div class="sidebar-content">
+            <a href="https://maps.app.goo.gl/VBTWKA97nGnJfUxJ7" target="_blank" rel="noopener noreferrer">https://maps.app.goo.gl/VBTWKA97nGnJfUxJ7</a><br>
+            Ds. Kajen, RT 02, RW 01, Kecamatan Margoyoso, Kabupaten Pati, Jawa Tengah<br>
+            Kode Pos: 59154
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-heading">DOI:</div>
+          <div class="sidebar-content">
+            Akad &amp; Resepsi Rabu 07 Juli 2027
+          </div>
+        </div>
+      </aside>
+
+      <!-- Abstract Box -->
+      <div class="abstract-box">
+        <div class="abstract-heading">ABSTRACT</div>
+        <p class="abstract-text">
+          Pernikahan merupakan perjalanan kehidupan yang menyatukan dua individu dalam ikatan penuh cinta, komitmen, dan tanggung jawab. Artikel ini menggambarkan perjalanan Diva Fakih As Shkiy Thalib, S.Pd., M.Pd. dan Arinda Avrillia Putri, S.Pd., M.Pd. dalam membangun hubungan menuju ikatan suci pernikahan. Penyatuan dua insan ini tidak hanya dimaknai sebagai hubungan personal, tetapi juga sebagai bentuk ikhtiar dalam membangun keluarga yang berlandaskan kasih sayang, nilai spiritual, dan keberkahan. Dalam perspektif Islam, pernikahan merupakan salah satu tanda kebesaran Allah SWT sebagaimana firman-Nya: "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang." (QS. Ar-Rum: 21) Perjalanan ini menjadi awal dari terbentuknya keluarga baru yang diharapkan mampu menghadirkan ketenteraman (sakinah), cinta (mawaddah), dan kasih sayang (rahmah).
+        </p>
+      </div>
+
+    </section>
+
+    <!-- [Isi Konten Jurnal - DUA KOLOM] -->
+    <main class="two-column-body">
+
+      <!-- INTRODUCTION -->
+      <div class="section-title">INTRODUCTION</div>
+      <p>
+        Setiap perjalanan kehidupan memiliki cerita dan makna yang berbeda. Di antara berbagai pertemuan yang hadir, terdapat sebuah pertemuan istimewa yang membawa dua individu menuju tujuan yang sama. Pernikahan menjadi simbol penyatuan dua perjalanan kehidupan yang sebelumnya berjalan masing-masing, kemudian memilih untuk melangkah bersama dalam satu ikatan suci.
+      </p>
+      <p>
+        Pernikahan bukan hanya tentang menyatukan dua hati, tetapi juga menyatukan harapan, nilai kehidupan, keluarga, serta impian masa depan. Dengan cinta, kepercayaan, dan komitmen, dua insan belajar untuk saling melengkapi dan menghadapi perjalanan kehidupan bersama.
+      </p>
+
+      <!-- RESEARCH METHOD -->
+      <div class="section-title">RESEARCH METHOD</div>
+      <p>
+        Artikel ini menggunakan pendekatan naratif-reflektif untuk menggambarkan perjalanan hubungan kedua mempelai. Kajian dilakukan melalui pemaknaan terhadap proses pengenalan, komunikasi, dukungan keluarga, serta nilai spiritual yang menjadi dasar terbentuknya komitmen menuju pernikahan.
+      </p>
+      <p>
+        Pendekatan ini menggambarkan bahwa sebuah hubungan yang kuat terbentuk melalui proses saling memahami, menghargai, dan bertumbuh bersama dalam menghadapi berbagai fase kehidupan.
+      </p>
+
+      <!-- RESULTS AND DISCUSSION -->
+      <div class="section-title">RESULTS AND DISCUSSION</div>
+      <div class="sub-section-title">Results</div>
+      <p>
+        Hasil perjalanan menunjukkan bahwa hubungan antara Diva Fakih As Shkiy Thalib, S.Pd., M.Pd. dan Arinda Avrillia Putri, S.Pd., M.Pd. berkembang melalui proses pengenalan, kepercayaan, dan kesamaan tujuan. Perjalanan tersebut menghasilkan keputusan untuk menyatukan langkah dalam ikatan pernikahan sebagai bentuk komitmen membangun kehidupan bersama.
+      </p>
+      <p>
+        Pernikahan ini menjadi awal dari perjalanan baru yang diharapkan membawa kebahagiaan, ketenangan, dan keberkahan dalam kehidupan rumah tangga.
+      </p>
+
+      <!-- GAMBAR 1: PLACEHOLDER FOTO MEMPELAI -->
+      <figure class="figure-container">
+        <div class="figure-image-box">
+          <!-- Tag <img> yang siap diisi tautan foto asli jika diinginkan -->
+          <img 
+            id="fotoMempelaiImg"
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='260' viewBox='0 0 400 260'><rect width='400' height='260' fill='%23f8fafc'/><rect x='10' y='10' width='380' height='240' fill='none' stroke='%23cbd5e1' stroke-width='2' stroke-dasharray='4'/><circle cx='160' cy='110' r='35' fill='%2394a3b8'/><path d='M110 200 C110 160 210 160 210 200 Z' fill='%2394a3b8'/><circle cx='240' cy='115' r='32' fill='%2364748b'/><path d='M195 200 C195 165 285 165 285 200 Z' fill='%2364748b'/><text x='200' y='230' font-family='sans-serif' font-size='12' fill='%2364748b' text-anchor='middle'>[Placeholder Foto Mempelai Pria &amp; Wanita]</text></svg>" 
+            alt="Gambar 1. Foto Mempelai Pria dan Wanita"
+          />
+        </div>
+        <figcaption class="figure-caption">
+          <strong>Gambar 1.</strong> Foto Mempelai Pria dan Wanita
+        </figcaption>
+      </figure>
+
+      <!-- DISCUSSION -->
+      <div class="sub-section-title">Discussion</div>
+      <p>
+        Sebuah pernikahan membutuhkan lebih dari sekadar rasa cinta. Hubungan yang berkelanjutan dibangun melalui komunikasi, kesetiaan, tanggung jawab, dan kesediaan untuk saling mendukung. Dua individu yang bersatu dalam pernikahan tidak hanya berbagi kebahagiaan, tetapi juga belajar menghadapi setiap dinamika kehidupan sebagai satu kesatuan.
+      </p>
+      <p>
+        Dalam ajaran Islam, keluarga yang dibangun melalui pernikahan diharapkan menjadi tempat hadirnya ketenteraman dan kasih sayang. Nilai sakinah, mawaddah, dan rahmah menjadi harapan utama dalam perjalanan rumah tangga yang akan dibangun oleh kedua mempelai.
+      </p>
+
+      <!-- CONCLUSION -->
+      <div class="section-title">CONCLUSION</div>
+      <p>
+        Dari sebuah pertemuan lahirlah sebuah perjalanan, dan dari perjalanan tersebut terbentuk sebuah keputusan untuk menyatukan dua jiwa dalam ikatan suci pernikahan. Diva Fakih As Shkiy Thalib, S.Pd., M.Pd. dan Arinda Avrillia Putri, S.Pd., M.Pd. memulai babak baru kehidupan dengan harapan dapat membangun keluarga yang penuh cinta, keberkahan, dan ridha Allah SWT.
+      </p>
+      <p>
+        Dengan penuh rasa syukur, kedua mempelai mengundang keluarga, sahabat, dan orang-orang terkasih untuk memberikan doa serta menjadi bagian dari momentum berharga penyatuan dua insan ini.
+      </p>
+      <p>
+        "Dua jiwa dipertemukan oleh takdir, disatukan oleh cinta, dan berjalan bersama menuju keabadian dalam ridha Allah SWT."
+      </p>
+
+      <!-- ACKNOWLEDGEMENTS -->
+      <div class="section-title">ACKNOWLEDGEMENTS</div>
+      <p>
+        Penulis (kedua mempelai) memanjatkan puji syukur ke hadirat Allah SWT atas segala rahmat, petunjuk, dan karunia-Nya yang telah mempertemukan dan menyatukan langkah kedua jiwa ini dalam ikatan yang suci. Rasa terima kasih yang tak terhingga dan penghargaan setinggi-tingginya kami sampaikan kepada kedua orang tua tercinta: Bapak Abdul Muntolib dan Ibu Siti Masithoh, serta Bapak Suhartono dan Ibu Trisusanti. Cinta kasih, bimbingan, dukungan, serta doa restu yang tiada henti dari beliau telah menjadi fondasi utama bagi kami dalam mempersiapkan diri melangkah menuju kehidupan rumah tangga.
+      </p>
+      <p>
+        Kami juga mengucapkan terima kasih yang sebesar-besarnya kepada seluruh keluarga besar, baik yang berada di Kabupaten Melawi, Kalimantan Barat, maupun di Kabupaten Pati, Jawa Tengah. Segala bentuk dukungan moral, tenaga, dan waktu yang telah dicurahkan untuk membantu kelancaran persiapan acara akad dan resepsi pada 07 Juli 2027 sangatlah bermakna bagi kami.
+      </p>
+      <p>
+        Apresiasi yang mendalam turut kami sampaikan kepada para sahabat, rekan sejawat, serta seluruh pihak yang tidak dapat disebutkan satu per satu, yang telah membersamai perjalanan kisah ini sejak pertemuan pertama pada November 2022 hingga detik ini. Kehadiran, semangat, dan doa dari semuanya memberikan kekuatan bagi kami dalam merajut harapan dan impian masa depan bersama. Kami berharap silaturahmi ini akan terus terjalin erat dan doa tulus yang diberikan dapat menjadi jalan pembuka keberkahan bagi keluarga yang akan kami bangun.
+      </p>
+
+      <!-- A GIFT FOR OUR WEDDING -->
+      <div class="section-title">A Gift for Our Wedding</div>
+      <p class="no-indent">
+        Your presence is the greatest gift, but if you wish to give a wedding gift for us, you may send it through the bank details below.
+      </p>
+
+      <!-- GAMBAR 2: PLACEHOLDER QRIS -->
+      <figure class="figure-container">
+        <div class="figure-image-box">
+          <!-- Tag <img> QRIS yang bersih dan presisi -->
+          <img 
+            id="qrisImg"
+            src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'><rect width='260' height='260' fill='%23ffffff'/><rect x='15' y='15' width='230' height='230' fill='none' stroke='%23000000' stroke-width='2'/><rect x='25' y='25' width='55' height='55' fill='%23000000'/><rect x='33' y='33' width='39' height='39' fill='%23ffffff'/><rect x='41' y='41' width='23' height='23' fill='%23000000'/><rect x='180' y='25' width='55' height='55' fill='%23000000'/><rect x='188' y='33' width='39' height='39' fill='%23ffffff'/><rect x='196' y='41' width='23' height='23' fill='%23000000'/><rect x='25' y='180' width='55' height='55' fill='%23000000'/><rect x='33' y='188' width='39' height='39' fill='%23ffffff'/><rect x='41' y='196' width='23' height='23' fill='%23000000'/><rect x='95' y='35' width='12' height='12' fill='%23000000'/><rect x='125' y='35' width='12' height='12' fill='%23000000'/><rect x='155' y='35' width='12' height='12' fill='%23000000'/><rect x='95' y='65' width='12' height='12' fill='%23000000'/><rect x='135' y='65' width='12' height='12' fill='%23000000'/><rect x='35' y='95' width='12' height='12' fill='%23000000'/><rect x='65' y='95' width='12' height='12' fill='%23000000'/><rect x='95' y='95' width='12' height='12' fill='%23000000'/><rect x='135' y='95' width='12' height='12' fill='%23000000'/><rect x='165' y='95' width='12' height='12' fill='%23000000'/><rect x='195' y='95' width='12' height='12' fill='%23000000'/><rect x='225' y='95' width='12' height='12' fill='%23000000'/><rect x='105' y='105' width='50' height='50' fill='%23ee2e24'/><text x='130' y='135' font-family='sans-serif' font-weight='bold' font-size='13' fill='%23ffffff' text-anchor='middle'>QRIS</text><rect x='95' y='165' width='12' height='12' fill='%23000000'/><rect x='125' y='165' width='12' height='12' fill='%23000000'/><rect x='155' y='165' width='12' height='12' fill='%23000000'/><rect x='185' y='165' width='12' height='12' fill='%23000000'/><rect x='95' y='195' width='12' height='12' fill='%23000000'/><rect x='135' y='195' width='12' height='12' fill='%23000000'/><rect x='165' y='195' width='12' height='12' fill='%23000000'/><rect x='195' y='195' width='12' height='12' fill='%23000000'/><rect x='105' y='225' width='12' height='12' fill='%23000000'/><rect x='135' y='225' width='12' height='12' fill='%23000000'/><rect x='175' y='225' width='12' height='12' fill='%23000000'/><rect x='215' y='225' width='12' height='12' fill='%23000000'/></svg>" 
+            alt="Gambar 2. QRIS if you wish to give a wedding gift"
+          />
+        </div>
+        <figcaption class="figure-caption">
+          <strong>Gambar 2.</strong> QRIS if you wish to give a wedding gift
+        </figcaption>
+      </figure>
+
+    </main>
+
+    <!-- FOOTER RESMI ARTIKEL JURNAL -->
+    <footer class="article-footer">
+      <div>
+        0000-0000/© 2027 The Authors. Published by Elsevier B.V. on behalf of Wedding Journey of Fakih and Arinda.
+      </div>
+      <div>
+        Peer-reviewed under official matrimonial ethics.
+      </div>
+    </footer>
+
+  </article>
+
+  <!-- JAVASCRIPT MURNI (VANILLA JS) UNTUK MENGAMBIL PARAMETER URL ?kepada= -->
+  <script>
+    (function () {
+      /**
+       * Fungsi untuk mengekstrak parameter URL 'kepada'
+       * Menangani decoding URL serta penggantian tanda '+' menjadi spasi
+       */
+      function getGuestNameFromUrl() {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          var guest = params.get('kepada');
+          if (guest && guest.trim() !== '') {
+            // Penggantian + menjadi spasi dan decodeURIComponent
+            var decoded = decodeURIComponent(guest.replace(/\+/g, ' ')).trim();
+            if (decoded) {
+              return decoded;
+            }
+          }
+        } catch (e) {
+          console.error('Error saat parsing parameter ?kepada=:', e);
+        }
+        return 'Tamu Undangan';
+      }
+
+      /**
+       * Memperbarui elemen teks "Kepada: [Nama Tamu]"
+       */
+      function updateGuestDisplay(name) {
+        var displayEl = document.getElementById('namaTamuDisplay');
+        if (displayEl) {
+          displayEl.textContent = 'Kepada: ' + name;
+        }
+
+        var inputEl = document.getElementById('inputNamaTamu');
+        if (inputEl && document.activeElement !== inputEl) {
+          inputEl.value = (name !== 'Tamu Undangan') ? name : '';
+        }
+      }
+
+      // Eksekusi saat DOM siap
+      var currentGuest = getGuestNameFromUrl();
+      updateGuestDisplay(currentGuest);
+
+      // Event listener tombol penguji di toolbar
+      var btnUpdate = document.getElementById('btnUpdateNama');
+      var inputTamu = document.getElementById('inputNamaTamu');
+      var btnSalin = document.getElementById('btnSalinLink');
+
+      if (btnUpdate && inputTamu) {
+        btnUpdate.addEventListener('click', function () {
+          var inputVal = inputTamu.value.trim();
+          var newName = inputVal || 'Tamu Undangan';
+          updateGuestDisplay(newName);
+
+          // Update URL tanpa reload halaman
+          if (window.history && window.history.pushState) {
+            var newUrl = window.location.pathname + (inputVal ? ('?kepada=' + encodeURIComponent(inputVal)) : '');
+            window.history.pushState({ path: newUrl }, '', newUrl);
+          }
+        });
+
+        // Dukungan tombol Enter pada input
+        inputTamu.addEventListener('keypress', function (e) {
+          if (e.key === 'Enter') {
+            btnUpdate.click();
+          }
+        });
+      }
+
+      if (btnSalin && inputTamu) {
+        btnSalin.addEventListener('click', function () {
+          var inputVal = inputTamu.value.trim() || currentGuest;
+          var shareUrl = window.location.origin + window.location.pathname + '?kepada=' + encodeURIComponent(inputVal);
+          
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(shareUrl).then(function () {
+              var oldText = btnSalin.textContent;
+              btnSalin.textContent = 'Link Tersalin!';
+              btnSalin.style.backgroundColor = '#16a34a';
+              setTimeout(function () {
+                btnSalin.textContent = oldText;
+                btnSalin.style.backgroundColor = '';
+              }, 2000);
+            });
+          } else {
+            prompt('Salin tautan ini:', shareUrl);
+          }
+        });
+      }
+
+      // Listener perubahan history navigasi (back/forward)
+      window.addEventListener('popstate', function () {
+        var guestFromPop = getGuestNameFromUrl();
+        updateGuestDisplay(guestFromPop);
+      });
+    })();
+  </script>
+</body>
+</html>
