@@ -5,9 +5,11 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DARI PERTEMUAN MENUJU KEABADIAN - Diva Fakih & Arinda Avrillia</title>
+  <title>DARI PERTEMUAN MENUJU KEABADIAN - Diva Fakih &amp; Arinda Avrillia</title>
   <style>
-    /* RESET & DASAR ACADEMIC STYLES */
+    /* ==========================================================================
+       RESET & TYPOGRAPHY JURNAL ELSEVIER
+       ========================================================================== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -19,11 +21,11 @@
       color: #000000;
       font-family: "Times New Roman", Times, Georgia, "Source Serif 4", serif;
       font-size: 10.5pt;
-      line-height: 1.45;
+      line-height: 1.48;
       padding: 20px 10px;
     }
 
-    /* KONTEN ARTIKEL JURNAL ELSEVIER */
+    /* KERTAS JURNAL PUTIH */
     .journal-paper {
       background-color: #ffffff;
       max-width: 900px;
@@ -50,8 +52,8 @@
     }
 
     .elsevier-tree-svg {
-      width: 46px;
-      height: 54px;
+      width: 48px;
+      height: 56px;
       flex-shrink: 0;
     }
 
@@ -89,7 +91,7 @@
     .sciencedirect-tag {
       font-weight: bold;
       color: #ff6c00;
-      font-size: 12pt;
+      font-size: 13pt;
       letter-spacing: -0.5px;
     }
 
@@ -106,13 +108,13 @@
       display: inline-block;
       border: 1px solid #002b49;
       padding: 1px 8px;
-      font-size: 8pt;
+      font-size: 8.5pt;
       font-weight: bold;
       margin-top: 4px;
       color: #002b49;
     }
 
-    /* KEPADA TAMU UNDANGAN (DIPERBARUI VIA JS) */
+    /* KOTAK PENERIMA UNDANGAN (DINAMIS VIA URL PARAMETER ?kepada=) */
     .recipient-banner {
       background-color: #fafbfc;
       border: 1px solid #007398;
@@ -140,7 +142,7 @@
 
     /* JUDUL UTAMA ARTIKEL */
     .main-title {
-      font-size: 17pt;
+      font-size: 16.5pt;
       font-weight: bold;
       line-height: 1.25;
       color: #000000;
@@ -148,7 +150,7 @@
       text-align: left;
     }
 
-    /* NAMA PENULIS / MEMPELAI */
+    /* NAMA PENULIS / MEMPELAI & AFILIASI */
     .authors-section {
       margin-bottom: 18px;
     }
@@ -175,7 +177,7 @@
       margin-bottom: 2px;
     }
 
-    /* BAGIAN GRID: INFORMASI JURNAL & ABSTRAK */
+    /* GRID: INFORMASI JURNAL & ABSTRAK */
     .abstract-metadata-container {
       display: flex;
       flex-direction: column;
@@ -194,7 +196,7 @@
       }
     }
 
-    /* KOTAK KIRI: ARTICLE HISTORY, KEYWORDS, ALAMAT, DOI */
+    /* KOTAK KIRI / INFORMASI JURNAL */
     .journal-sidebar {
       font-size: 9pt;
       line-height: 1.35;
@@ -230,7 +232,7 @@
       word-break: break-all;
     }
 
-    /* KOTAK KANAN: ABSTRACT */
+    /* KOTAK KANAN / ABSTRACT */
     .abstract-box {
       text-align: justify;
     }
@@ -245,11 +247,11 @@
 
     .abstract-text {
       font-size: 9.5pt;
-      line-height: 1.45;
+      line-height: 1.48;
       text-indent: 1.5em;
     }
 
-    /* TATA LETAK DUA KOLOM UNTUK KONTEN UTAMA ARTIKEL */
+    /* KONTEN DUA KOLOM AKADEMIS */
     .two-column-body {
       text-align: justify;
       hyphens: auto;
@@ -290,7 +292,7 @@
       text-indent: 0;
     }
 
-    /* PLACEHOLDER GAMBAR & CAPTION BERGAYA ELSEVIER */
+    /* KOTAK PLACEHOLDER GAMBAR & CAPTION */
     .figure-container {
       margin: 14px 0;
       text-align: center;
@@ -302,22 +304,25 @@
 
     .figure-image-box {
       width: 100%;
-      min-height: 180px;
-      background-color: #f3f4f6;
+      min-height: 160px;
+      background-color: #f8fafc;
       border: 1px dashed #9ca3af;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12px;
+      padding: 8px;
       margin-bottom: 8px;
+      position: relative;
     }
 
     .figure-image-box img {
       max-width: 100%;
+      max-height: 380px;
       height: auto;
       display: block;
       border: 1px solid #e5e7eb;
+      object-fit: contain;
     }
 
     .figure-caption {
@@ -329,11 +334,10 @@
     }
 
     .figure-caption strong {
-      font-family: Arial, Helvetica, sans-serif;
       font-weight: bold;
     }
 
-    /* FOOTER ELSEVIER */
+    /* FOOTER */
     .article-footer {
       border-top: 1px solid #000000;
       margin-top: 24px;
@@ -348,7 +352,7 @@
       gap: 8px;
     }
 
-    /* TOOLBAR / TESTER UNTUK MERUBAH ?kepada= */
+    /* TOOLBAR PANEL PENGUJIAN NAMA TAMU (TIDAK TERCETAK) */
     .toolbar-container {
       max-width: 900px;
       margin: 0 auto 16px auto;
@@ -362,6 +366,7 @@
       gap: 10px;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 9pt;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
 
     .toolbar-input-group {
@@ -381,6 +386,11 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    .toolbar-input:focus {
+      outline: none;
+      border-color: #007398;
+    }
+
     .toolbar-btn {
       background-color: #002b49;
       color: #ffffff;
@@ -390,6 +400,7 @@
       cursor: pointer;
       font-weight: bold;
       font-size: 8.5pt;
+      transition: background-color 0.15s ease;
     }
 
     .toolbar-btn:hover {
@@ -404,13 +415,17 @@
       background-color: #005a77;
     }
 
-    /* PRINT RULES */
+    /* PENGATURAN MEDIA CETAK / PDF (@media print) */
     @media print {
       body {
         background-color: #ffffff !important;
         padding: 0 !important;
+        margin: 0 !important;
       }
-      .toolbar-container {
+      .toolbar-container,
+      #noPrintToolbar,
+      input,
+      button {
         display: none !important;
       }
       .journal-paper {
@@ -425,11 +440,11 @@
 <script src="/_aistudio-iframe.js?v=2c34bde1"></script></head>
 <body>
 
-  <!-- TOOLBAR PENGUJI PARAMETER ?kepada= & SALIN TAUTAN (TIDAK TERCETAK) -->
+  <!-- TOOLBAR PENGUJI PARAMETER ?kepada= & SALIN TAUTAN (OTOMATIS HILANG SAAT DICETAK) -->
   <div class="toolbar-container" id="noPrintToolbar">
     <div class="toolbar-input-group">
       <label for="inputNamaTamu"><strong>Tes Nama Tamu:</strong></label>
-      <input type="text" id="inputNamaTamu" class="toolbar-input" placeholder="Ketik nama tamu (contoh: Bapak Budi Santoso & Keluarga)">
+      <input type="text" id="inputNamaTamu" class="toolbar-input" placeholder="Ketik nama tamu (contoh: Haikal Azizi Elmaz, S.Pd. dan pasangannya)">
       <button type="button" class="toolbar-btn" id="btnUpdateNama">Terapkan</button>
       <button type="button" class="toolbar-btn toolbar-btn-secondary" id="btnSalinLink">Salin Link Undangan</button>
     </div>
@@ -469,7 +484,7 @@
 
     <!-- [Penerima Undangan - Gunakan JS di sini] -->
     <div class="recipient-banner">
-      <div class="recipient-label">Penerima Undangan Kehormatan:</div>
+      <div class="recipient-label">Penerima Undangan:</div>
       <div class="recipient-name" id="namaTamuDisplay">Kepada: Tamu Undangan</div>
     </div>
 
@@ -542,7 +557,7 @@
 
     </section>
 
-    <!-- [Isi Konten Jurnal - DUA KOLOM] -->
+    <!-- [Isi Konten Jurnal - TATA LETAK DUA KOLOM] -->
     <main class="two-column-body">
 
       <!-- INTRODUCTION -->
@@ -573,14 +588,14 @@
         Pernikahan ini menjadi awal dari perjalanan baru yang diharapkan membawa kebahagiaan, ketenangan, dan keberkahan dalam kehidupan rumah tangga.
       </p>
 
-      <!-- GAMBAR 1: PLACEHOLDER FOTO MEMPELAI -->
+      <!-- GAMBAR 1: TAG IMG UNTUK FOTO MEMPELAI -->
       <figure class="figure-container">
         <div class="figure-image-box">
-          <!-- Tag <img> yang siap diisi tautan foto asli jika diinginkan -->
           <img 
             id="fotoMempelaiImg"
             src="FOTO NIKAH.jpg" 
             alt="Gambar 1. Foto Mempelai Pria dan Wanita"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'240\' viewBox=\'0 0 400 240\'><rect width=\'400\' height=\'240\' fill=\'%23f8fafc\'/><circle cx=\'160\' cy=\'100\' r=\'32\' fill=\'%2394a3b8\'/><path d=\'M115 190 C115 150 205 150 205 190 Z\' fill=\'%2394a3b8\'/><circle cx=\'240\' cy=\'105\' r=\'30\' fill=\'%2364748b\'/><path d=\'M195 190 C195 155 285 155 285 190 Z\' fill=\'%2364748b\'/><text x=\'200\' y=\'215\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%2364748b\' text-anchor=\'middle\'>[FOTO NIKAH.jpg]</text></svg>';"
           />
         </div>
         <figcaption class="figure-caption">
@@ -627,14 +642,14 @@
         Your presence is the greatest gift, but if you wish to give a wedding gift for us, you may send it through the bank details below.
       </p>
 
-      <!-- GAMBAR 2: PLACEHOLDER QRIS -->
+      <!-- GAMBAR 2: TAG IMG UNTUK QRIS -->
       <figure class="figure-container">
         <div class="figure-image-box">
-          <!-- Tag <img> QRIS yang bersih dan presisi -->
           <img 
             id="qrisImg"
             src="QRIS.jpg" 
             alt="Gambar 2. QRIS if you wish to give a wedding gift"
+            onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'240\' height=\'240\' viewBox=\'0 0 240 240\'><rect width=\'240\' height=\'240\' fill=\'%23ffffff\'/><rect x=\'10\' y=\'10\' width=\'220\' height=\'220\' fill=\'none\' stroke=\'%23000000\' stroke-width=\'2\'/><rect x=\'20\' y=\'20\' width=\'50\' height=\'50\' fill=\'%23000000\'/><rect x=\'28\' y=\'28\' width=\'34\' height=\'34\' fill=\'%23ffffff\'/><rect x=\'36\' y=\'36\' width=\'18\' height=\'18\' fill=\'%23000000\'/><rect x=\'170\' y=\'20\' width=\'50\' height=\'50\' fill=\'%23000000\'/><rect x=\'178\' y=\'28\' width=\'34\' height=\'34\' fill=\'%23ffffff\'/><rect x=\'186\' y=\'36\' width=\'18\' height=\'18\' fill=\'%23000000\'/><rect x=\'20\' y=\'170\' width=\'50\' height=\'50\' fill=\'%23000000\'/><rect x=\'28\' y=\'178\' width=\'34\' height=\'34\' fill=\'%23ffffff\'/><rect x=\'36\' y=\'186\' width=\'18\' height=\'18\' fill=\'%23000000\'/><rect x=\'90\' y=\'30\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'115\' y=\'30\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'140\' y=\'30\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'90\' y=\'60\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'125\' y=\'60\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'30\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'60\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'90\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'120\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'150\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'180\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'205\' y=\'90\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'95\' y=\'95\' width=\'50\' height=\'50\' fill=\'%23ee2e24\'/><text x=\'120\' y=\'125\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'12\' fill=\'%23ffffff\' text-anchor=\'middle\'>QRIS</text><rect x=\'90\' y=\'155\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'120\' y=\'155\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'150\' y=\'155\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'175\' y=\'155\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'90\' y=\'180\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'125\' y=\'180\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'155\' y=\'180\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'185\' y=\'180\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'100\' y=\'205\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'130\' y=\'205\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'165\' y=\'205\' width=\'10\' height=\'10\' fill=\'%23000000\'/><rect x=\'200\' y=\'205\' width=\'10\' height=\'10\' fill=\'%23000000\'/></svg>';"
           />
         </div>
         <figcaption class="figure-caption">
@@ -656,50 +671,59 @@
 
   </article>
 
-  <!-- JAVASCRIPT MURNI (VANILLA JS) UNTUK MENGAMBIL PARAMETER URL ?kepada= -->
+  <!-- ==========================================================================
+       JAVASCRIPT MURNI (VANILLA JS) UNTUK PARAMETER URL ?kepada=
+       ========================================================================== -->
   <script>
     (function () {
       /**
-       * Fungsi untuk mengekstrak parameter URL 'kepada'
-       * Menangani decoding URL serta penggantian tanda '+' menjadi spasi
+       * Mengambil nama tamu dari parameter URL ?kepada=
+       * Mendukung format persen encoding (misal: %20, %2C), tanda plus (+), dan URL encoding umum
        */
-      function getGuestNameFromUrl() {
+      function dapatkanNamaTamu() {
         try {
-          var params = new URLSearchParams(window.location.search);
-          var guest = params.get('kepada');
-          if (guest && guest.trim() !== '') {
-            // Penggantian + menjadi spasi dan decodeURIComponent
-            var decoded = decodeURIComponent(guest.replace(/\+/g, ' ')).trim();
-            if (decoded) {
-              return decoded;
+          var urlParams = new URLSearchParams(window.location.search);
+          var nama = urlParams.get('kepada');
+          if (nama && nama.trim() !== '') {
+            // Penggantian + menjadi spasi dan decodeURIComponent yang aman
+            var hasilDecode = decodeURIComponent(nama.replace(/\+/g, ' ')).trim();
+            if (hasilDecode) {
+              return hasilDecode;
             }
           }
         } catch (e) {
-          console.error('Error saat parsing parameter ?kepada=:', e);
+          console.error('Terjadi kesalahan membaca parameter ?kepada=:', e);
         }
         return 'Tamu Undangan';
       }
 
       /**
-       * Memperbarui elemen teks "Kepada: [Nama Tamu]"
+       * Menampilkan teks "Kepada: [Nama Tamu]" ke elemen target
        */
-      function updateGuestDisplay(name) {
-        var displayEl = document.getElementById('namaTamuDisplay');
-        if (displayEl) {
-          displayEl.textContent = 'Kepada: ' + name;
+      function perbaruiTeksPenerima(namaKustom) {
+        var namaTamu = namaKustom !== undefined ? namaKustom : dapatkanNamaTamu();
+        var elDisplay = document.getElementById('namaTamuDisplay');
+        if (elDisplay) {
+          elDisplay.textContent = 'Kepada: ' + namaTamu;
         }
 
         var inputEl = document.getElementById('inputNamaTamu');
         if (inputEl && document.activeElement !== inputEl) {
-          inputEl.value = (name !== 'Tamu Undangan') ? name : '';
+          inputEl.value = (namaTamu !== 'Tamu Undangan') ? namaTamu : '';
         }
       }
 
-      // Eksekusi saat DOM siap
-      var currentGuest = getGuestNameFromUrl();
-      updateGuestDisplay(currentGuest);
+      // Inisialisasi saat script berjalan
+      perbaruiTeksPenerima();
 
-      // Event listener tombol penguji di toolbar
+      // Pastikan dieksekusi ulang saat DOM selesai dimuat
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          perbaruiTeksPenerima();
+        });
+      }
+
+      // Tombol interaktif Toolbar: Update Nama & Salin Link
       var btnUpdate = document.getElementById('btnUpdateNama');
       var inputTamu = document.getElementById('inputNamaTamu');
       var btnSalin = document.getElementById('btnSalinLink');
@@ -708,7 +732,7 @@
         btnUpdate.addEventListener('click', function () {
           var inputVal = inputTamu.value.trim();
           var newName = inputVal || 'Tamu Undangan';
-          updateGuestDisplay(newName);
+          perbaruiTeksPenerima(newName);
 
           // Update URL tanpa reload halaman
           if (window.history && window.history.pushState) {
@@ -717,7 +741,7 @@
           }
         });
 
-        // Dukungan tombol Enter pada input
+        // Tekan Enter pada input langsung terapkan
         inputTamu.addEventListener('keypress', function (e) {
           if (e.key === 'Enter') {
             btnUpdate.click();
@@ -727,8 +751,9 @@
 
       if (btnSalin && inputTamu) {
         btnSalin.addEventListener('click', function () {
-          var inputVal = inputTamu.value.trim() || currentGuest;
-          var shareUrl = window.location.origin + window.location.pathname + '?kepada=' + encodeURIComponent(inputVal);
+          var inputVal = inputTamu.value.trim();
+          var currentName = inputVal || dapatkanNamaTamu();
+          var shareUrl = window.location.origin + window.location.pathname + '?kepada=' + encodeURIComponent(currentName !== 'Tamu Undangan' ? currentName : 'Tamu Undangan');
           
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(shareUrl).then(function () {
@@ -745,20 +770,10 @@
           }
         });
       }
-<style>
-@media print {
-  /* Menyembunyikan menu bagian atas saat dicetak ke PDF */
-  div[style*="position: fixed"], 
-  div:has(> input#guestInput), 
-  input, button {
-    display: none !important;
-  }
-}
-</style>
-      // Listener perubahan history navigasi (back/forward)
+
+      // Dengarkan perubahan histori navigasi (Back / Forward browser)
       window.addEventListener('popstate', function () {
-        var guestFromPop = getGuestNameFromUrl();
-        updateGuestDisplay(guestFromPop);
+        perbaruiTeksPenerima();
       });
     })();
   </script>
